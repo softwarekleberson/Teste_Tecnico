@@ -1,10 +1,10 @@
 import { Router } from "express";
 import DespesaController from "../controllers/DespesaController.js";
 
-const router = Router()
+const routerCategoria = Router()
 
 //Rota despesa
-router.post('/api/despesa', DespesaController.store)
-router.get('/api/despesa', DespesaController.index)
+routerCategoria.post('/api/despesa', DespesaController.store)
+routerCategoria.get('/api/despesa', DespesaController.index)
 
-export default router
+export default routerCategoria

@@ -1,16 +1,16 @@
 export default class Categoria {
-    constructor(categoria){
-        this.setCategoria(categoria)
+    constructor(nome){
+        this.setNome(nome)
     }
 
-    setCategoria(categoria){
-        if(!categoria || categoria.trim() === ''){
+    setNome(nome){
+        if(!nome || nome.trim() === ''){
             throw new Error('Categoria não deve ser nula ou vazia')
         }
-        this.categoria = categoria
+        this.nome = nome
     }
 
-    getCategoria(){
-        return this.categoria
+    getNome(){
+        return this.nome
     }
 }
