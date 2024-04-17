@@ -24,41 +24,6 @@ class DespesaRepository {
             })
         })
     }
-
-    findById(id) {
-        const sql = "SELECT * FROM despesa WHERE id=?;"
-        return new Promise((resolve, reject) => {
-            conexao.query(sql, id, (erro, resultado) => {
-                if (erro) return reject('Não foi possível localizar')
-
-                const rows = JSON.parse(JSON.stringify(resultado))
-                return resolve(rows)
-            })
-        })
-    }
-
-    update(despesa, id) {
-        const sql = "UPDATE despesa SET ? WHERE id=?;"
-        return new Promise((resolve, reject) => {
-            conexao.query(sql, [despesa, id], (erro, resultado) => {
-                if (erro) return reject('Não foi possível atualizar')
-                const rows = JSON.parse(JSON.stringify(resultado))
-                return resolve(rows)
-            })
-        })
-    }
-
-    delete(id) {
-        const sql = "DELETE FROM despesa WHERE id=?;"
-        return new Promise((resolve, reject) => {
-            conexao.query(sql, id, (erro, resultado) => {
-                if (erro) return reject('Não foi possível apagar')
-
-                const rows = JSON.parse(JSON.stringify(resultado))
-                return resolve(rows)
-            })
-        })
-    }
 }
 
 export default new DespesaRepository()

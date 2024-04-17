@@ -28,9 +28,13 @@ export default class Despesa {
     }
 
     setData(data){
-        this.data = data
+        const dataTransformada = new Date(data)
+        if(!(dataTransformada instanceof Date)){
+            throw new Error('Data deve ser um objeto Date')
+        }
+        this.data = dataTransformada
     }
-
+    
     getData(){
         return this.data
     }

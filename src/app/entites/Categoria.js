@@ -4,10 +4,10 @@ export default class Categoria {
     }
 
     setCategoria(categoria){
-        if(!nome || nome.trim() === ''){
+        if(!categoria || categoria.trim() === ''){
             throw new Error('Categoria não deve ser nula ou vazia')
         }
-        this.nome = categoria
+        this.categoria = categoria
     }
 
     getCategoria(){
