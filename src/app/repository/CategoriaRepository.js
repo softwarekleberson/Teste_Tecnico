@@ -34,11 +34,12 @@ class CategoriaRepository {
         return new Promise((resolve, reject) => {
             conexao.query(sql, [idCategoria], (erro, resultado) => { 
                 if (erro) {
-                    // Rejeitar a promessa com o erro original
                     return reject(new Error('Não foi possível localizar a categoria: ' + erro.message));
                 }
-                    
-                return true;
+                
+                const rows = JSON.parse(JSON.stringify(resultado))
+
+                return resolve(rows);
             });
         });
     }

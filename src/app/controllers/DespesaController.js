@@ -11,12 +11,12 @@ class DespesaController {
             const { valor, descricao, data, idCategoria, idTipoPagamento } = req.body
 
             const categoriaExiste = await this.verificaCategoria(idCategoria)
-            if(categoriaExiste != true){
+            if(!categoriaExiste){
               throw new Error("Categoria Não Encontrada")
             }
             
             const tipoPagamentoExiste = await this.verificaTipoPagamento(idTipoPagamento)
-            if(tipoPagamentoExiste != true){
+            if(!tipoPagamentoExiste){
               throw new Error("Tipo Pagamento não encontrado")
             }
           
@@ -53,7 +53,7 @@ class DespesaController {
 
     async verificaCategoria(idCategoria){
       try {
-          const id = parent(idCategoria)
+          const id = parseInt(idCategoria)
           const categoria = await CategoriaRepository.findById(id);
           return categoria;
       } catch (error) {
@@ -63,7 +63,7 @@ class DespesaController {
 
     async verificaTipoPagamento(idTipoPagamento){
       try {
-        const id = parent(idTipoPagamento)
+        const id = parseInt(idTipoPagamento)
         const tipoPagamento = await ModoPagamentoRepository.findById(id)
         return tipoPagamento
       } catch (error) {

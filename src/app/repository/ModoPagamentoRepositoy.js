@@ -19,11 +19,12 @@ class ModoPagamento {
         return new Promise((resolve, reject) => {
             conexao.query(sql, [idTipoPagamento], (erro, resultado) => { 
                 if (erro) {
-                    // Rejeitar a promessa com o erro original
                     return reject(new Error('Não foi possível localizar o tipo de pagamento: ' + erro.message));
                 }
     
-                return true;
+                const rows = JSON.parse(JSON.stringify(resultado))
+
+                return resolve(rows);
             });
         });
     }
