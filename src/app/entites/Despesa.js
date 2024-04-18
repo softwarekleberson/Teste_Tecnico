@@ -19,8 +19,8 @@ export default class Despesa {
     }
 
     setDescricao(descricao){
-        if(!descricao || descricao.trim() === ''){
-            throw new Error('Descrição não deve ser nula')
+        if(descricao.trim() === '' || descricao.length > 100){
+            throw new Error('Descrição não deve ser nula ou maior que 100 caracteres')
         }
         this.descricao = descricao
     }
