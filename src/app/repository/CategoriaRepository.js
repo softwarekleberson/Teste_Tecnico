@@ -8,7 +8,7 @@ class CategoriaRepository {
         return new Promise((resolve, reject) => {
             conexao.query(sql, categoria, (erro, resultado) => {
                 if(erro) return reject
-                ('Não foi possível cadsatrar')
+                ('Não foi possível cadastrar')
 
                 const row = JSON.parse
                 (JSON.stringify(resultado))
@@ -27,6 +27,20 @@ class CategoriaRepository {
                 return resolve(rows)
             })
         })
+    }
+
+    findById(idCategoria) {
+        const sql = "SELECT * FROM categoria WHERE id = ?";
+        return new Promise((resolve, reject) => {
+            conexao.query(sql, [idCategoria], (erro, resultado) => { 
+                if (erro) {
+                    // Rejeitar a promessa com o erro original
+                    return reject(new Error('Não foi possível localizar a categoria: ' + erro.message));
+                }
+                    
+                return true;
+            });
+        });
     }
 }
 

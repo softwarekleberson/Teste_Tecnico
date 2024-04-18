@@ -1,8 +1,10 @@
 export default class Despesa {
-    constructor(valor, descricao, data){
+    constructor(valor, descricao, data, categoriaExiste, tipoPagamentoExiste){
         this.setValor(valor)
         this.setDescricao(descricao)
         this.setData(data)
+        this.setCategoria(categoriaExiste)
+        this.setTipoPagamento(tipoPagamentoExiste)
     }
 
     setValor(valor){
@@ -37,5 +39,21 @@ export default class Despesa {
     
     getData(){
         return this.data
+    }
+
+    setCategoria(categoria){
+        this.categoria = categoria
+    }
+
+    getCategoria(){
+        return this.categoria;
+    }
+
+    setTipoPagamento(tipoPagamento){
+        this.tipoPagamento = tipoPagamento
+    }
+
+    getTipoPagamento(){
+        return this.getTipoPagamento
     }
 }
