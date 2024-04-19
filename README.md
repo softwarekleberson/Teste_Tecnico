@@ -24,6 +24,7 @@ Este projeto consiste na criação de uma API REST utilizando Node.js. A API ofe
 
 - **Criação da Categoria**: `/api/categoria`
 - **Criação da Despesa**: `/api/despesa`
+- **Criação da Tipo Pagamento**: `/api/localhost:3000/api/tipo`
 
 ## Requisitos
 
