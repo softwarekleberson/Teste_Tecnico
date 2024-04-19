@@ -4,7 +4,6 @@ class ModoPagamento {
 
     create(tipo){
         const sql = "INSERT INTO tipo SET ?"
-        console.log(tipo)
 
         return new Promise((resolve, reject) => {
             conexao.query(sql, tipo, (erro, resultado) => {

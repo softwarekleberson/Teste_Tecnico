@@ -8,14 +8,14 @@ class DespesaController {
 
     async store(req, res) {
         try {
-            const { valor, descricao, data, idCategoria, idTipoPagamento } = req.body
+            const { valor, descricao, data, tipo_id, categoria_id } = req.body
 
-            const categoriaExiste = await this.verificaCategoria(idCategoria)
+            const categoriaExiste = await this.verificaCategoria(categoria_id)
             if(!categoriaExiste){
               throw new Error("Categoria Não Encontrada")
             }
             
-            const tipoPagamentoExiste = await this.verificaTipoPagamento(idTipoPagamento)
+            const tipoPagamentoExiste = await this.verificaTipoPagamento(tipo_id)
             if(!tipoPagamentoExiste){
               throw new Error("Tipo Pagamento não encontrado")
             }
@@ -29,7 +29,7 @@ class DespesaController {
         } catch (error) {
             const data = req.body.data
             const sucess = false
-            res.status(400).json({data, sucess})
+            res.status(400).json(error)
         }
     }
 
