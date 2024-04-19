@@ -2,6 +2,22 @@ import conexao from "../database/conexao.js";
 
 class ModoPagamento {
 
+    create(tipo){
+        const sql = "INSERT INTO tipo SET ?"
+        console.log(tipo)
+
+        return new Promise((resolve, reject) => {
+            conexao.query(sql, tipo, (erro, resultado) => {
+                if(erro) return reject
+                ('Não foi possível cadastrar')
+
+                const row = JSON.parse
+                (JSON.stringify(resultado))
+                return resolve(row)
+            })
+        })
+    }
+    
     findAll(){
         const sql = "SELECT * FROM tipo;"
         return new Promise((resolve, reject) => {
@@ -12,21 +28,6 @@ class ModoPagamento {
                 return resolve(rows)
             })
         })
-    }
-
-    findById(idTipoPagamento) {
-        const sql = "SELECT * FROM tipo WHERE id = ?";
-        return new Promise((resolve, reject) => {
-            conexao.query(sql, [idTipoPagamento], (erro, resultado) => { 
-                if (erro) {
-                    return reject(new Error('Não foi possível localizar o tipo de pagamento: ' + erro.message));
-                }
-    
-                const rows = JSON.parse(JSON.stringify(resultado))
-
-                return resolve(rows);
-            });
-        });
     }
 }
 
