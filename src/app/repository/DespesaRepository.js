@@ -3,16 +3,20 @@ import conexao from "../database/conexao.js"
 class DespesaRepository {
 
     create(despesa) {
-        const sql = "INSERT INTO despesa SET ?"
+        const sql = "INSERT INTO despesa SET ?"; 
+        console.log(despesa);
         return new Promise((resolve, reject) => {
-            conexao.query(sql, despesa, (erro, resultado) => {
-                if(erro) return reject('Não foi possível cadastrar')
-                const row = JSON.parse(JSON.stringify(resultado))
-                return resolve(row)
-            })
-        })
+            conexao.query(sql, despesa, (erro, resultado) => { // Pass despesa directly
+                if (erro) {
+                    console.error("Erro ao cadastrar despesa:", erro);
+                    return reject("Não foi possível cadastrar a despesa");
+                }
+                const row = JSON.parse(JSON.stringify(resultado));
+                resolve(row);
+            });
+        });
     }
-
+    
     findAll() {
         const primeiroDiaMesAtual = new Date(new Date().getFullYear(), new Date().getMonth(), 1);
         const ultimoDiaMesAtual = new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0);
