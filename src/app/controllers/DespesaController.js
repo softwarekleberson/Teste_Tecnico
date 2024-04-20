@@ -27,14 +27,14 @@ class DespesaController {
         console.log(despesa)
         await DespesaRepository.create(despesa)
 
-        const sucess = true
+        const success = true
         res.status(201).json({ data, success })
 
     } catch (error) {
         const data = req.body.data
         const success = false
         console.log(error)
-        res.status(400).json(error)
+        res.status(400).json({data, success})
     }
 }
 
@@ -46,7 +46,9 @@ class DespesaController {
                 id: row.id,
                 valor: row.valor,
                 descricao: row.descricao,
-                data: row.data
+                data: row.data,
+                categoria: row.categoria_id,
+                tipo: row.tipo_id
             }
           })
 
